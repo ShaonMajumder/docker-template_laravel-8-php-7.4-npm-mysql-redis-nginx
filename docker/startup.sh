@@ -7,8 +7,16 @@ if [ ! -f artisan ]; then
     echo "Laravel not found. Creating Laravel in /tmp/laravel..."
     composer create-project --prefer-dist laravel/laravel /tmp/laravel
 
-    echo "Copying .env from environment directory..."
-    cp environment/.env /tmp/laravel/.env
+    # Copy the environment file if specified
+    if [ -n "$APP_ENV_FILE" ]; then
+        echo "Copying $APP_ENV_FILE from environment directory..."
+        cp environment/$APP_ENV_FILE /tmp/laravel/.env
+    else
+        echo "No APP_ENV_FILE specified, using existing .env"
+        echo "Copying .env from environment directory..."
+        cp environment/.env /tmp/laravel/.env
+    fi
+
     php artisan config:clear
 
     echo "Copying Laravel to current directory..."

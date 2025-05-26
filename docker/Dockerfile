@@ -51,10 +51,6 @@ RUN if [ -f artisan ] && [ -f composer.json ]; then \
     echo "Laravel not found. Skipping composer install and artisan commands."; \
     fi
 
-
-# RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-# RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-# RUN php artisan key:generate
 RUN if [ -f artisan ]; then \
     chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache && \
