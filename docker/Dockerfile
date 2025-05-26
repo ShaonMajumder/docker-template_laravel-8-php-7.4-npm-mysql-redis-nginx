@@ -42,9 +42,6 @@ RUN [ -d /var/www/html/storage ] && chown -R www-data:www-data /var/www/html/sto
 # 0.484
 # 0.484   git config --global --add safe.directory /var/www/html
 
-# RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
-#     && composer dump-autoload -o \
-#     && php artisan package:discover
 RUN if [ -f artisan ] && [ -f composer.json ]; then \
     composer install --no-interaction --prefer-dist --optimize-autoloader && \
     composer dump-autoload -o && \
