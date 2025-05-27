@@ -44,6 +44,8 @@ else
     fi
 fi
 
+# need npm
+
 echo "Setting correct permissions for the storage directory..."
 chown -R www-data:www-data /var/www/html/storage
 chmod -R 775 /var/www/html/storage
