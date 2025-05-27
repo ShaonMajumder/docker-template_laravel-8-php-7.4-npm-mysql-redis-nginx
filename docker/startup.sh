@@ -36,15 +36,13 @@ else
     echo "Laravel already exists. Skipping creation."
     if [ -n "$APP_ENV_FILE" ]; then
         echo "Copying $APP_ENV_FILE from environment directory..."
-        cp environment/$APP_ENV_FILE /tmp/laravel/.env
+        cp environment/$APP_ENV_FILE ./.env
     else
         echo "No APP_ENV_FILE specified, using existing .env.local"
         echo "Copying .env.local from environment directory..."
         cp environment/.env.local ./.env
     fi
 fi
-
-# need npm
 
 echo "Setting correct permissions for the storage directory..."
 chown -R www-data:www-data /var/www/html/storage
